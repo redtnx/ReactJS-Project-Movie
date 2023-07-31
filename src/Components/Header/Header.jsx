@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -16,12 +17,16 @@ const Header = () => {
             </span>
           </a>
           <div className="flex md:order-2">
-            <button
-              type="button"
-              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Get started
-            </button>
+            <div>
+              <NavLink to="/login" className="text-white text-xl">
+                <i className="fa-solid fa-circle-user pe-2"></i>
+                Đăng nhập
+              </NavLink>
+              <NavLink to="" className="text-white text-xl ml-4">
+                <i className="fa-solid fa-circle-user pe-2"></i>
+                Đăng kí
+              </NavLink>
+            </div>
             <button
               data-collapse-toggle="navbar-sticky"
               type="button"

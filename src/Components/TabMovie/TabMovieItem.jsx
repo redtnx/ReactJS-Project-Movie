@@ -41,17 +41,22 @@ const TabMovieItem = ({ maHeThongRap }) => {
                     </div>
                     <div className="w-10/12">
                       <h3>{item.tenPhim}</h3>
-                      {item.lstLichChieuTheoPhim
-                        .slice(0, 5)
-                        .map((suatChieu, index) => {
-                          return (
-                            <p key={index}>
-                              {moment(suatChieu.ngayChieuGioChieu).format(
-                                "DD/MM/YYYY, h:mm"
-                              )}
-                            </p>
-                          );
-                        })}
+                      <div className="flex flex-wrap">
+                        {item.lstLichChieuTheoPhim
+                          .slice(0, 5)
+                          .map((suatChieu, index) => {
+                            return (
+                              <p
+                                key={index}
+                                className="w-1/2 border border-black rounded-md py-2 px-4 mb-5"
+                              >
+                                {moment(suatChieu.ngayChieuGioChieu).format(
+                                  "DD/MM/YYYY, h:mm"
+                                )}
+                              </p>
+                            );
+                          })}
+                      </div>
                     </div>
                   </div>
                 );

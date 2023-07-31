@@ -18,6 +18,10 @@ Các thư viện cần cài đặt:
 - ant design (npm install antd --save)
 - tailwindcss (npm install -D tailwindcss npx tailwindcss init)
 - sass, sass-loader
+- lottie
+- moment
+- formik: quản lý form
+- yup:
 
 Link truy cập lấy api:
 http://movienew.cybersoft.edu.vn/swagger/index.html
