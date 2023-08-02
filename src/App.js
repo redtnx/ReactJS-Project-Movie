@@ -5,6 +5,7 @@ import Page404 from "./pages/Page404/Page404";
 import Login from "./pages/Login/Login";
 import AdminTemplate from "./template/AdminTemplate";
 import LoginAdmin from "./pages/LoginAdmin/LoginAdmin";
+import UserManagement from "./pages/UserManagement/UserManagement";
 
 function App() {
   return (
@@ -14,7 +15,9 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="/login" element={<Login />}></Route>
         </Route>
-        <Route path="/admin" element={<AdminTemplate />}></Route>
+        <Route path="/admin" element={<AdminTemplate />}>
+          <Route index element={<UserManagement />}></Route>
+        </Route>
         <Route path="/admin-login" element={<LoginAdmin />}></Route>
         <Route path="*" element={<Page404 />}></Route>
       </Routes>

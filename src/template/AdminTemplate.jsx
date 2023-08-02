@@ -8,7 +8,7 @@ import {
   VideoCameraOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, Button, theme } from "antd";
-import { NavLink } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 const { Header, Sider, Content } = Layout;
 
 const AdminTemplate = () => {
@@ -69,7 +69,7 @@ const AdminTemplate = () => {
             background: colorBgContainer,
           }}
         >
-          Content
+          <Outlet />
         </Content>
       </Layout>
     </Layout>
