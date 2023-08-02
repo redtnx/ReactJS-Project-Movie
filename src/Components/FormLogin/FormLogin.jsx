@@ -1,9 +1,17 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import Input from "antd/es/input/Input";
 import { nguoiDungServ } from "../../services/nguoiDungServices";
+import { luuXuongLocal } from "../../utilities/localStorage";
+import { useNavigate } from "react-router-dom";
+import { Input, message } from "antd";
+import { useDispatch } from "react-redux";
+import { setDuLieuHoTen } from "../../redux/slices/nguoiDungSlice";
+
 const FormLogin = () => {
+  const [messageApi, contextHolder] = message.useMessage();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       taiKhoan: "",
@@ -16,9 +24,18 @@ const FormLogin = () => {
         .dangNhap(values)
         .then((res) => {
           console.log(res);
+          //nếu như login thành công sẽ lưu thông tin xuống local và chuyển hướng người dùng về trang chủ
+          messageApi.success("Đăng nhập thành công!");
+          //khi gọi dữ liệu thành công, sẽ lấy dữ liệu đó gửi lên redux
+          dispatch(setDuLieuHoTen(res.data.content));
+          luuXuongLocal("user", res.data.content);
+          setTimeout(() => {
+            navigate("/");
+          }, 1000);
         })
         .catch((err) => {
           console.log(err);
+          messageApi.error(err.response.data.content);
         });
     },
     validationSchema: yup.object({
@@ -32,6 +49,7 @@ const FormLogin = () => {
   const { handleSubmit, handleChange, handleBlur } = formik;
   return (
     <div>
+      {contextHolder}
       <form className="max-w-md" onSubmit={handleSubmit}>
         <div className="mb-6">
           <label

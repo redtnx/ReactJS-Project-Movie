@@ -1,7 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 const Header = () => {
+  const { hoTen } = useSelector((state) => state.nguoiDung); //ở đấy có thể hiểu hook useSelector giúp truy cập tới initialState của Slice nguoiDung nên có thể dùng bóc tách phần tử để bóc ra thuộc tính hoTen
+  console.log(hoTen);
   return (
     <div>
       <nav className="bg-white dark:bg-gray-900 w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
@@ -18,14 +21,20 @@ const Header = () => {
           </a>
           <div className="flex md:order-2">
             <div>
-              <NavLink to="/login" className="text-white text-xl">
-                <i className="fa-solid fa-circle-user pe-2"></i>
-                Đăng nhập
-              </NavLink>
-              <NavLink to="" className="text-white text-xl ml-4">
-                <i className="fa-solid fa-circle-user pe-2"></i>
-                Đăng kí
-              </NavLink>
+              {hoTen != null ? (
+                <p className="text-white">{hoTen.hoTen}</p>
+              ) : (
+                <>
+                  <NavLink to="/login" className="text-white text-xl">
+                    <i className="fa-solid fa-circle-user pe-2"></i>
+                    Đăng nhập
+                  </NavLink>
+                  <NavLink to="" className="text-white text-xl ml-4">
+                    <i className="fa-solid fa-circle-user pe-2"></i>
+                    Đăng kí
+                  </NavLink>
+                </>
+              )}
             </div>
             <button
               data-collapse-toggle="navbar-sticky"
