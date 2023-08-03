@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import {
   MenuFoldOutlined,
@@ -9,6 +9,7 @@ import {
 } from "@ant-design/icons";
 import { Layout, Menu, Button, theme } from "antd";
 import { NavLink, Outlet } from "react-router-dom";
+import { layDuLieuLocal } from "../utilities/localStorage";
 const { Header, Sider, Content } = Layout;
 
 const AdminTemplate = () => {
@@ -16,6 +17,23 @@ const AdminTemplate = () => {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+
+  //khi người dùng không phải quản trị vào sẽ đá về trang chủ hoặc bất kì trang nào mình muốn
+  useEffect(() => {
+    //gọi dữ liệu từ local lên
+    const user = layDuLieuLocal("user");
+    //một là không có dữ liệu
+    //hai là lấy lên mà maLoaiKhachHang không phải là QuanTri
+    if (user) {
+      // console.log(user);
+      if (user.maLoaiNguoiDung != "QuanTri") {
+        window.location.href = "https://google.com";
+      }
+    } else {
+      window.location.href = "https://google.com";
+    }
+  }, []);
+
   return (
     <Layout className="min-h-screen">
       <Sider trigger={null} collapsible collapsed={collapsed}>

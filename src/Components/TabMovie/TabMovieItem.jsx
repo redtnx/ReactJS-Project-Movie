@@ -10,7 +10,7 @@ const TabMovieItem = ({ maHeThongRap }) => {
     theaterServ
       .getAllLichChieuHeThongRap(maHeThongRap)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setLichChieu(res.data.content);
       })
       .catch((err) => {

@@ -9,7 +9,7 @@ import { getAllUser } from "../../redux/slices/nguoiDungSlice";
 const TableUser = () => {
   const dispatch = useDispatch();
   const { users } = useSelector((state) => state.nguoiDung);
-  console.log(users);
+  // console.log(users);
   const columns = [
     {
       title: "ID",
@@ -45,11 +45,11 @@ const TableUser = () => {
       dataIndex: "maLoaiNguoiDung",
       render: (text, record, index) => {
         //text chứa giá trị của thuộc tính đó trong data
-        console.log(text);
+        // console.log(text);
         //record chứa các phần tử trong mảng data
-        console.log(record);
+        // console.log(record);
         //index chứa vị trí của các phần tử trong data
-        console.log(index);
+        // console.log(index);
         return (
           <Tag color={text == "QuanTri" ? "magenta" : "blue"}>
             {text == "QuanTri" ? "Quản Trị" : "Khách Hàng"}
@@ -67,7 +67,7 @@ const TableUser = () => {
               nguoiDungServ
                 .deleteUser(record.taiKhoan)
                 .then((res) => {
-                  console.log(res);
+                  // console.log(res);
                   alert("Xóa thành công!");
                   dispatch(getAllUser());
                 })

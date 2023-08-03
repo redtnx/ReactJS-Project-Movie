@@ -18,12 +18,12 @@ const FormLogin = () => {
       matKhau: "",
     },
     onSubmit: (values) => {
-      console.log(values);
+      // console.log(values);
       //xử lí gửi dữ liệu lên server
       nguoiDungServ
         .dangNhap(values)
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           //nếu như login thành công sẽ lưu thông tin xuống local và chuyển hướng người dùng về trang chủ
           messageApi.success("Đăng nhập thành công!");
           //khi gọi dữ liệu thành công, sẽ lấy dữ liệu đó gửi lên redux

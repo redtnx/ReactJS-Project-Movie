@@ -12,7 +12,7 @@ const tokenAuthorization = layDuLieuLocal("user");
 const configHeaderAxios = () => {
   return {
     TokenCybersoft,
-    Authorization: "Bearer " + tokenAuthorization.accessToken,
+    Authorization: "Bearer " + tokenAuthorization?.accessToken,
   };
 };
 

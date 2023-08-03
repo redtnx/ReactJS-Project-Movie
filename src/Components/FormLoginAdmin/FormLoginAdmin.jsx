@@ -16,11 +16,11 @@ const FormLoginAdmin = () => {
       matKhau: "",
     },
     onSubmit: (values) => {
-      console.log(values);
+      // console.log(values);
       nguoiDungServ
         .dangNhap(values)
         .then((res) => {
-          console.log(res);
+          // console.log(res);
 
           //điều kiện để vào được trang admin, check maLoaiNguoiDung
           if (res.data.content.maLoaiNguoiDung == "QuanTri") {
